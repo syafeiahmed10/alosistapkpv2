@@ -1,7 +1,12 @@
 <?php
 
 require_once __DIR__ . "/vendor/autoload.php";
-$penanganan_pemukiman_kumuh = (new MongoDB\Client)->alosistapkpv2->penanganan_pemukiman_kumuh;
+
+
+$mongoClient = new MongoDB\Client('mongodb://alosistapkpv2:permisitujuhtujuh@localhost:27017/alosistapkpv2');
+$collection = $mongoClient->alosistapkpv2->penanganan_pemukiman_kumuh;
+
+
 
 ?>
 <!Doctype html>
@@ -158,7 +163,7 @@ $penanganan_pemukiman_kumuh = (new MongoDB\Client)->alosistapkpv2->penanganan_pe
 
 
                                     <tbody>
-                                        <?php $datas = $penanganan_pemukiman_kumuh->find([]); ?>
+                                        <?php $datas = $collection->find([]); ?>
                                         <?php $i = 1 ?>
                                         <?php foreach ($datas as $data) : ?>
                                             <tr>
