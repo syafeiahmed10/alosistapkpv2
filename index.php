@@ -26,8 +26,15 @@ if (isset($_POST['submit'])) {
 
     $_SESSION['success'] = "Import Berhasil";
     header("Location: index.php");
-    var_dump($insertOneResult);
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -315,6 +322,7 @@ if (isset($_POST['submit'])) {
 
 
 
+
                             </div>
                             <div class="card-body">
 
@@ -369,8 +377,162 @@ if (isset($_POST['submit'])) {
 
                                                 <td>
                                                     <div class="btn-group">
-                                                        <button type="button" class="fa fa-pencil btn btn-warning btn-sm baris"></button>
-                                                        <button type="button" class="fa fa-trash-o btn btn-danger btn-sm baris"></button>
+                                                        <button type="button" class="fa fa-pencil btn btn-warning btn-sm baris" data-toggle="modal" data-target=".editmodal<?php echo $data->_id ?>"></button>
+
+                                                        <!-- form EDIT -->
+                                                        <form action="update.php" method="post" enctype="multipart/form-data">
+                                                            <div class="modal fade editmodal<?php echo $data->_id ?>" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog modal-lg">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                            <h3 class="modal-title" id="exampleModalLabel">Penanganan Kawasan Kumuh</h3>
+                                                                        </div>
+                                                                        <div class="modal-body">
+
+                                                                            <?php
+                                                                            $id = $data->_id;
+
+                                                                            $dataedit = $collection->findOne(['_id' => $id]);
+                                                                            ?>
+
+                                                                            <input type="hidden" name="id_edit" value="<?php echo $dataedit->_id; ?>">
+
+                                                                            <div class="container-fluid">
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label class=" form-control-label">Kota/Kabupaten</label>
+                                                                                            <div class="input-group">
+                                                                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                                                                <input class="form-control" type="text" id="kota" name="kota" value="<?php echo $dataedit->kota ?>">
+                                                                                            </div>
+                                                                                            <small class="form-text text-muted">ex. semarang</small>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class=" form-control-label">Lokasi</label>
+                                                                                            <div class="input-group">
+                                                                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                                                                <input class="form-control" type="text" id="lokasi" name="lokasi" value="<?php echo $dataedit->nama_lokasi ?>">
+                                                                                            </div>
+                                                                                            <small class="form-text text-muted">ex. rowosari</small>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class=" form-control-label">Luas</label>
+                                                                                            <div class="input-group">
+                                                                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                                                                <input class="form-control" type="text" id="luas_tertangani" name="luas_tertangani" value="<?php echo $dataedit->luas_tertangani ?>">
+                                                                                            </div>
+                                                                                            <small class="form-text text-muted">ex. 3</small>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class=" form-control-label">Kecamatan</label>
+                                                                                            <div class="input-group">
+                                                                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                                                                <input class="form-control" type="text" id="kecamatan" name="kecamatan" value="<?php echo $dataedit->lingkup_administratif->kecamatan ?>">
+                                                                                            </div>
+                                                                                            <small class="form-text text-muted">ex. tembalang</small>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class=" form-control-label">kelurahan</label>
+                                                                                            <div class="input-group">
+                                                                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                                                                <input class="form-control" type="text" id="kelurahan" name="kelurahan" value="<?php echo $dataedit->lingkup_administratif->kelurahan ?>">
+                                                                                            </div>
+                                                                                            <small class="form-text text-muted">ex. meteseh</small>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class=" form-control-label">rw</label>
+                                                                                            <div class="input-group">
+                                                                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                                                                <input class="form-control" type="text" id="rw" name="rw" value="<?php echo $dataedit->lingkup_administratif->RW ?>">
+                                                                                            </div>
+                                                                                            <small class="form-text text-muted">ex. 1</small>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label class=" form-control-label">rt</label>
+                                                                                            <div class="input-group">
+                                                                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                                                                <input class="form-control" type="text" id="rt" name="rt" value="<?php echo $dataedit->lingkup_administratif->RT ?>">
+                                                                                            </div>
+                                                                                            <small class="form-text text-muted">ex. 12</small>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class=" form-control-label">Lintang</label>
+                                                                                            <div class="input-group">
+                                                                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                                                                <input class="form-control" type="text" id="lintang" name="lintang" value="<?php echo $dataedit->koordinat->lintang ?>">
+                                                                                            </div>
+                                                                                            <small class="form-text text-muted">ex. 80</small>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class=" form-control-label">Bujur</label>
+                                                                                            <div class="input-group">
+                                                                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                                                                <input class="form-control" type="text" id="bujur" name="bujur" value="<?php echo $dataedit->koordinat->bujur ?>">
+                                                                                            </div>
+                                                                                            <small class="form-text text-muted">ex. 70</small>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class=" form-control-label">Tahun</label>
+                                                                                            <div class="input-group">
+                                                                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                                                                <input class="form-control" type="text" id="tahun" name="tahun" value="<?php echo $dataedit->tahun ?>">
+                                                                                            </div>
+                                                                                            <small class="form-text text-muted">ex. 2021</small>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class=" form-control-label">Kegiatan</label>
+                                                                                            <div class="input-group">
+                                                                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                                                                <input class="form-control" type="text" id="kegiatan" name="kegiatan" value="<?php echo $dataedit->jenis_kegiatan ?>">
+                                                                                            </div>
+                                                                                            <small class="form-text text-muted">ex. Pengelolaan Sampah</small>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class=" form-control-label">Sumber Dana</label>
+                                                                                            <div class="input-group">
+                                                                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                                                                <input class="form-control" type="text" id="sumber_dana" name="sumber_dana" value="<?php echo $dataedit->sumber_dana ?>">
+                                                                                            </div>
+                                                                                            <small class="form-text text-muted">ex. kotaku</small>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class=" form-control-label">Sisa Kumuh</label>
+                                                                                            <div class="input-group">
+                                                                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                                                                <input class="form-control" type="text" id="sisa_kumuh" name="sisa_kumuh" value="<?php echo $dataedit->sisa_kumuh ?>">
+                                                                                            </div>
+                                                                                            <small class="form-text text-muted">ex. 4</small>
+                                                                                        </div>
+                                                                                    </div>
+
+
+                                                                                </div>
+                                                                            </div>
+
+
+
+
+
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                            <button type="submit">TES</button>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </form>
+                                                        <!-- form EDIT -->
+                                                        <a href='delete.php?id=<?php echo $data->_id ?>'><button type="button" class="fa fa-trash-o btn btn-danger btn-sm baris"></button></a>
                                                     </div>
                                                 </td>
                                             </tr>
