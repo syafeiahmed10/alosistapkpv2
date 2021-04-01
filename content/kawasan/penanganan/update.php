@@ -1,10 +1,6 @@
 <?php
-
 session_start();
-
 include 'function.php';
-
-
 $collection->updateOne(
     ['_id' => new MongoDB\BSON\ObjectID($_POST['id_edit'])],
 
@@ -34,5 +30,3 @@ $collection->updateOne(
 
 $_SESSION['success'] = "Book updated successfully";
 header("Location: index.php");
-var_dump($_POST['kota']);
-var_dump($gema);
