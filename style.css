@@ -1,0 +1,19 @@
+/* All version MAX 992px include Mobile Version*/
+.logojateng {
+    width: 90px;
+}
+
+label.logintext {
+    color: white;
+}
+/* DESKTOP VERSION */
+@media (min-width: 992px) { 
+    .logojateng {
+        width: 200px;
+    }
+
+
+
+
+
+}
