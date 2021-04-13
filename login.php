@@ -47,7 +47,8 @@ if (isset($_POST["login"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Alosista PKP 2.0</title>
     <meta name="description" content="Alosista PKP 2.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+	<meta name="viewport" content="width=device-width, user-scalable=no">
 
     <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
     <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png">

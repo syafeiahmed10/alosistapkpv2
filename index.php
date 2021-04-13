@@ -20,8 +20,8 @@ if (!isset($_SESSION["login"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Ela Admin - HTML5 Admin Template</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
     <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png">
 
@@ -101,10 +101,10 @@ if (!isset($_SESSION["login"])) {
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa ti-map-alt"></i>Kawasan</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa ti-map-alt"></i>Kawasan Permukiman</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
-                            <li><i class="fa fa-table"></i><a href="tables-data.html">Data Table</a></li>
+                            <li><a href="kawasan/sk/sk.php">SK</a></li>
+                            <li><a href="tables-data.html">Penanganan</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
